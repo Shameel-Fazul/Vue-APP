@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Vue</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <h1>Hello, Vue :)</h1>
+
+    <div id="app">
+        <div v-if="showBooks"> <!-- v-if is for conditional rendering -->
+            <h2>{{ title }} - {{ author }} - {{ age }}</h2>
+        </div>
+        <button @click="toggleShowBooks">
+            <span v-if="showBooks">Hide Books</span>
+            <span v-else>Show Books</span>
+        </button>
+
+        <div v-show="showBooks">Currently showing books</div>
+        <br><br><br><br><br><br>
+        <button v-on:click="age++">Increase age</button> <!-- v-on:click is a vue.js directive -->
+        <button v-on:click="age--">Decrease age</button>
+        <br><br><br>
+        <div @click="title = 'something else'">Change book</div> <!-- instead of v-on: , we can also use @ -->
+        <div @click="changeTitle('Oathbringer')">Change book</div> <!-- invoking a method from the component -->
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
