@@ -5,7 +5,9 @@ const app = Vue.createApp({
             showBooks: true,
             title: 'The Last Empire',
             author: 'Brandon Sanderson',
-            age: 45
+            age: 45,
+            x: 0,
+            y: 0
         }
     },
     methods: { // creating methods/fucntions to handle data
@@ -15,6 +17,14 @@ const app = Vue.createApp({
         },
         toggleShowBooks() {
             this.showBooks = !this.showBooks 
+        },
+        handleEvent(e) {
+            console.log('mouse event triggered')
+            console.log(e.type)
+        },
+        handleMousemove(e) {
+            this.x = e.offsetX
+            this.y = e.offsetY
         }
     }
 
