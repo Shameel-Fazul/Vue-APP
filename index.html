@@ -5,6 +5,15 @@
     <title>Learning Vue</title>
     <script src="https://unpkg.com/vue@3.0.2"></script>
     <style>
+        body {
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+        p, h3, ul {
+            margin: 0;
+            padding: 0;
+        }
         .box {
             padding: 100px 0;
             width: 400px;
@@ -12,6 +21,24 @@
             background: #ddd;
             margin: 20px;
             display: inline-block;
+        }
+        .image {
+            height: 120px;
+            width: 80px;
+        }
+        li {
+            list-style-type: none;
+            background: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        li.fav {
+            background: #ff9ed2;
+            color: white;
         }
     </style>
 </head>
@@ -40,6 +67,33 @@
         <div class="box" @mouseleave="handleEvent">mouseleave</div> <!--to add custom arguments with the events, we use handleEvent($event, arg1, arg2, arg3) -->
         <div class="box" @dblclick="handleEvent">double click</div>
         <div class="box" @mousemove="handleMousemove">position - {{ x }} {{ y }}</div>
+        <br>
+
+        <!-- Outputting Lists (Basically Foreach or Map)-->
+        <ul>
+            <li v-for="book in books" :class="{ fav: book.isFav }" @click="book.isFav = !book.isFav">
+                <img :src="book.img" class="image" :alt="book.title"> <!-- Attribute Binding -->
+                <h3>{{ book.title }}</h3>
+                <p>{{ book.author }}</p>
+                <hr>
+            </li>
+        </ul>
+        <br>
+
+         <!-- Attribute Binding (Dynamic values for HTML attributes) -->
+         <a v-bind:href="url">Shameel Fazul</a>
+         <br>
+         <a :href="url">Another way Shameel Fazul</a> <!-- Easier way for Attribute Binding -->
+         <br><br><br>
+         <h3>Filtered Books</h3>
+         <ul>
+            <li v-for="book in filteredBooks">
+                <img :src="book.img" class="image" :alt="book.title"> <!-- Attribute Binding -->
+                <h3>{{ book.title }}</h3>
+                <p>{{ book.author }}</p>
+                <hr>
+            </li>
+        </ul>
     </div>
 
     <script src="app.js"></script>

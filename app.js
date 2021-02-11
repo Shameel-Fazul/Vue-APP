@@ -2,12 +2,18 @@ const app = Vue.createApp({
     // data, fucntions
     data() {  // creating a data function to output dynamic value
         return {
+            url: 'https://shameel-fazul.tech',
             showBooks: true,
             title: 'The Last Empire',
             author: 'Brandon Sanderson',
             age: 45,
             x: 0,
-            y: 0
+            y: 0,
+            books: [
+                { title: 'name of the wind', author: 'patrick rothfuss', img: 'assets/book-1.jpg', isFav: true },
+                { title: 'cosmos', author: 'carl sagan', img: 'assets/book-2.jpg', isFav: false },
+                { title: 'black holes', author: 'neil degrasse tyson', img: 'assets/book-3.jpg', isFav: true }
+            ]
         }
     },
     methods: { // creating methods/fucntions to handle data
@@ -26,6 +32,12 @@ const app = Vue.createApp({
             this.x = e.offsetX
             this.y = e.offsetY
         }
+    },
+    computed: { // computed properties; it depends on other values to do tasks like filtering
+        filteredBooks() {
+            return this.books.filter((book) => book.isFav == true)
+        }
+
     }
 
     // template: '<h2>I am the template</h2>'
